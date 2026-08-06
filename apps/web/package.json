@@ -1,0 +1,41 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plan B frontend — Next.js App Router application.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev --turbopack -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf .next .turbo out"
+  },
+  "dependencies": {
+    "@plan-b/shared-types": "workspace:*",
+    "@plan-b/ui": "workspace:*",
+    "next": "^15.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@plan-b/config": "workspace:*",
+    "@testing-library/react": "^16.0.1",
+    "@types/node": "^20.17.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "^15.0.3",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  }
+}

@@ -1,0 +1,23 @@
+node_modules
+.pnpm-store
+dist
+build
+.next
+out
+coverage
+.turbo
+pnpm-lock.yaml
+*.tsbuildinfo
+apps/api/prisma/migrations
+CHANGELOG.md
+
+# Locked planning documents — copied verbatim from the source uploads,
+# never reformatted so they stay byte-identical to the approved originals.
+docs/part-1.md
+docs/part-2.md
+docs/part-3.md
+docs/part-4.md
+docs/part-5.md
+docs/phase-1-foundation.md
+docs/phase-2-database-bible.md
+docs/phase-3-technical-specification.md

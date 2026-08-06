@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens (Part 2 §24, Phase 1 §6) are the only place raw hex/px/ms
+ * values exist. Token/theme partials are added here as they're authored in
+ * a future milestone:
+ *
+ *   @import './styles/tokens/index.css';
+ *   @import './styles/themes/index.css';
+ *   @import './styles/components/index.css';
+ *
+ * No component in this repository hardcodes a raw color, font size, or
+ * spacing value — Tailwind classes only ever resolve to tokens declared in
+ * this layer.
+ */

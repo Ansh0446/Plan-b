@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "declaration": false,
+    "sourceMap": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@plan-b/ui": ["packages/ui/src/index.ts"],
+      "@plan-b/ui/*": ["packages/ui/src/*"],
+      "@plan-b/shared-types": ["packages/shared-types/src/index.ts"],
+      "@plan-b/shared-types/*": ["packages/shared-types/src/*"],
+      "@plan-b/config": ["packages/config/index.ts"],
+      "@plan-b/config/*": ["packages/config/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".next", "coverage", ".turbo"]
+}

@@ -1,0 +1,14 @@
+// This file is the repository-setup placeholder for Prisma.
+// No models are defined in Milestone 1 — the full schema is locked in
+// docs/phase-2-database-bible.md and lands as its own milestone.
+// This file exists so `prisma generate` / `prisma migrate` / `prisma studio`
+// are wired end-to-end and the Prisma client package builds correctly.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}

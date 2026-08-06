@@ -1,0 +1,59 @@
+# === Dependencies ===
+node_modules/
+.pnpm-store/
+
+# === Build outputs ===
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# === Turborepo ===
+.turbo/
+
+# === Testing ===
+coverage/
+.nyc_output/
+
+# === Environment ===
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.staging
+.env.production
+!.env.example
+!*.env.example
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === Editors / OS ===
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# === Prisma ===
+apps/api/prisma/migrations/dev.db*
+apps/api/generated/
+
+# === Backend runtime / uploads ===
+apps/api/uploads-tmp/
+
+# === Misc ===
+*.pem
+.eslintcache
+.vercel
+.railway
+next-env.d.ts

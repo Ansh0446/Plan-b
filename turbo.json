@@ -1,0 +1,71 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalDependencies": [".env", "tsconfig.base.json"],
+  "globalEnv": ["NODE_ENV", "PORT", "CORS_ORIGIN", "DATABASE_URL"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "src/**",
+        "app/**",
+        "public/**",
+        "prisma/**",
+        "*.config.*",
+        "tsconfig*.json",
+        "package.json"
+      ],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "start": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "db:generate": {
+      "cache": false,
+      "outputs": ["node_modules/.prisma/**"]
+    },
+    "db:migrate": {
+      "cache": false
+    },
+    "db:migrate:deploy": {
+      "cache": false
+    },
+    "db:seed": {
+      "cache": false
+    },
+    "db:studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@plan-b/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared tsconfig, ESLint, and Tailwind base configuration for the Plan B monorepo.",
+  "license": "UNLICENSED",
+  "exports": {
+    "./tsconfig/base": "./tsconfig/base.json",
+    "./tsconfig/nextjs": "./tsconfig/nextjs.json",
+    "./tsconfig/nestjs": "./tsconfig/nestjs.json",
+    "./eslint/base": "./eslint/base.mjs",
+    "./eslint/nextjs": "./eslint/nextjs.mjs",
+    "./eslint/nestjs": "./eslint/nestjs.mjs",
+    "./tailwind/base": "./tailwind/base.ts"
+  },
+  "files": [
+    "tsconfig",
+    "eslint",
+    "tailwind"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
+}

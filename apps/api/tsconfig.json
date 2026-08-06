@@ -1,0 +1,13 @@
+{
+  "extends": "@plan-b/config/tsconfig/nestjs",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist", "uploads-tmp"]
+}
