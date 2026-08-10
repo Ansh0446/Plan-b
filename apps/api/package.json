@@ -5,6 +5,9 @@
   "description": "Plan B backend — NestJS API.",
   "license": "UNLICENSED",
   "scripts": {
+    "postinstall": "prisma generate",
+    "prebuild": "pnpm db:generate",
+    "predev": "pnpm db:generate",
     "dev": "nest start --watch",
     "build": "nest build",
     "start": "node dist/src/main.js",

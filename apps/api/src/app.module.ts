@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
+import { PrismaModule } from './database/prisma.module';
 import appConfig from './config/app.config';
 import { HealthModule } from './modules/health/health.module';
 
@@ -20,6 +20,7 @@ import { HealthModule } from './modules/health/health.module';
       cache: true,
     }),
     HealthModule,
+    PrismaModule,
   ],
 })
 export class AppModule {}
