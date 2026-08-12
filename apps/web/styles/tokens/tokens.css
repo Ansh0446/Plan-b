@@ -1,0 +1,62 @@
+/**
+ * Global design tokens (Part 2 §4/§20/§24). This is the ONLY place a raw
+ * hex value is allowed to exist (§24/§25 Rule 1) — every component
+ * consumes these via Tailwind's token-mapped utilities (tailwind.config.ts),
+ * never a raw value directly.
+ *
+ * Light values are the `:root` default; dark values apply under `.dark`
+ * (Tailwind `darkMode: 'class'`, set on `<html>` — see layout.tsx).
+ */
+
+:root {
+  /* Foundation */
+  --color-paper: #fbf9f4;
+  --color-ink: #15172e;
+  --color-ink-soft: #4a4d6b;
+  --color-ink-faint: #9497b0;
+
+  /* Surfaces (light) */
+  --surface-base: #fbf9f4;
+  --surface-card: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-sunken: #f2efe6;
+  --border-default: #e6e2d6;
+  --border-strong: #d2cdbb;
+
+  /* Accent — "Highlighter" */
+  --accent-highlighter: #e7a928;
+  --accent-highlighter-hover: #d89a1c;
+  --accent-highlighter-pressed: #c08a16;
+  --accent-highlighter-subtle: #fbedcb;
+
+  /* Semantic */
+  --status-success: #2e9e63;
+  --status-success-subtle: #e3f4ea;
+  --status-error: #d64545;
+  --status-error-subtle: #fbe7e7;
+  --status-warning: #c97a1f;
+  --status-warning-subtle: #fbefdd;
+  --status-info: #3b5bdb;
+  --status-info-subtle: #e8ecfb;
+}
+
+.dark {
+  --color-ink: #fbf9f4;
+  --color-ink-soft: #b7b9cf;
+  --color-ink-faint: #6f7290;
+
+  /* Surfaces (dark) */
+  --surface-base: #0f1124;
+  --surface-card: #181a34;
+  --surface-elevated: #20223f;
+  --surface-sunken: #0a0b1a;
+  --border-default: #2b2e4e;
+  --border-strong: #3a3d61;
+
+  --accent-highlighter-subtle: #3a3011;
+
+  --status-success-subtle: #123222;
+  --status-error-subtle: #3a1414;
+  --status-warning-subtle: #3a2a10;
+  --status-info-subtle: #151c3a;
+}

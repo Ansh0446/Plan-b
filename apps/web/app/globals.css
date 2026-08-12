@@ -1,17 +1,59 @@
+@import '../styles/tokens/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /*
  * Design tokens (Part 2 §24, Phase 1 §6) are the only place raw hex/px/ms
- * values exist. Token/theme partials are added here as they're authored in
- * a future milestone:
- *
- *   @import './styles/tokens/index.css';
- *   @import './styles/themes/index.css';
- *   @import './styles/components/index.css';
- *
- * No component in this repository hardcodes a raw color, font size, or
- * spacing value — Tailwind classes only ever resolve to tokens declared in
- * this layer.
+ * values exist — see styles/tokens/tokens.css. No component in this
+ * repository hardcodes a raw color, font size, or spacing value; Tailwind
+ * classes only ever resolve to tokens declared in that layer.
  */
+
+@layer base {
+  body {
+    @apply bg-surface-base font-body text-ink antialiased transition-colors duration-200;
+  }
+
+  /* Part 2 §15/§17: focus rings are immediate, never transitioned or suppressed. */
+  :focus-visible {
+    outline: 2px solid var(--accent-highlighter);
+    outline-offset: 2px;
+  }
+
+  /* Part 2 §17: prefers-reduced-motion disables transform-based motion; fades remain, shortened. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Part 2 §19: skeleton shimmer — 1.5s loop, low opacity, surface.sunken base. */
+  @keyframes shimmer {
+    0% {
+      background-position: -400px 0;
+    }
+    100% {
+      background-position: 400px 0;
+    }
+  }
+
+  .animate-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      var(--surface-sunken) 0%,
+      var(--border-default) 50%,
+      var(--surface-sunken) 100%
+    );
+    background-size: 800px 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+}
