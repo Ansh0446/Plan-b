@@ -81,3 +81,16 @@ export interface ApiErrorEnvelope {
   };
   meta: ApiMeta;
 }
+export type SubjectResourceCategory = 'NOTES' | 'PYQ' | 'IMPORTANT' | 'VIDEO' | 'SYLLABUS';
+
+export interface SubjectResourceResponseDto {
+  id: string;
+  subjectId: string;
+  category: SubjectResourceCategory;
+  title: string;
+  description: string | null;
+  fileUrl: string | null;
+  externalUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
+}

@@ -202,6 +202,18 @@ enum NotificationChannel {
   @@map("notification_channel")
 }
 
+/// Milestone 4 — the category tabs on the Subject detail page (Notes,
+/// PYQs, Important Questions, Videos, Syllabus).
+enum SubjectResourceCategory {
+  NOTES
+  PYQ
+  IMPORTANT
+  VIDEO
+  SYLLABUS
+
+  @@map("subject_resource_category")
+}
+
 // =============================================================================
 // SECTION 1.1 / SECTION 2 — IDENTITY & ACCESS
 // =============================================================================
@@ -489,6 +501,7 @@ model Subject {
   bookmarks              Bookmark[]
   searchIndexEntries     SearchIndexEntry[]
   coupons                Coupon[]                @relation("CouponApplicableSubject")
+  subjectResources       SubjectResource[]
 
   // Section 10 — "Subject.name + code (full-text)" powers keyword search.
   // A plain B-tree index on each is the Milestone-2 baseline; a GIN/
@@ -1209,3 +1222,46 @@ model AuditLogEntry {
   @@map("audit_log_entries")
 }
 
+// =============================================================================
+// MILESTONE 4 — SUBJECT CONTENT LAYER
+// =============================================================================
+
+/// Milestone 4's lightweight, free content item (Notes/PYQ/Important/
+/// Video/Syllabus) attached directly to a Subject.
+///
+/// Deliberately named `SubjectResource` — NOT `Resource` — to avoid
+/// colliding with the existing, unrelated `Resource` model (Phase 2 §4:
+/// the priced, versioned, purchasable marketplace entity locked in
+/// Milestone 2). The two are different concepts that happen to share an
+/// English word: `Resource` is a sellable product; `SubjectResource` is
+/// free reference material scoped to one Subject. Renaming or merging
+/// either would be exactly the "rewrite existing architecture" Milestone
+/// 4 says not to do.
+model SubjectResource {
+  id String @id @default(uuid()) @db.Uuid
+
+  subjectId String  @map("subject_id") @db.Uuid
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  category SubjectResourceCategory
+
+  title       String
+  description String?
+
+  /// At least one of `fileUrl`/`externalUrl` is expected in practice
+  /// (e.g. a stored PDF vs. a YouTube link for a Video resource), but
+  /// both are optional at the schema level — enforcing "at least one
+  /// present" is a Service-layer validation rule (Phase 2 §14's
+  /// philosophy: DB constraints only for the few uniqueness rules
+  /// explicitly named in the Bible; everything else belongs in the
+  /// Service layer), not a database constraint.
+  fileUrl     String? @map("file_url")
+  externalUrl String? @map("external_url")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([subjectId])
+  @@index([subjectId, category])
+  @@map("subject_resources")
+}

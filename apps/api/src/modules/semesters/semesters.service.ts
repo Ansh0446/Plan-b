@@ -3,7 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import type { BranchesService } from '../branches/branches.service';
 
 import type { SemesterResponseDto } from './dto/semester-response.dto';
-import type { SemestersRepository} from './semesters.repository';
+import type { SemestersRepository } from './semesters.repository';
 import { type SemesterWithSubjectCount } from './semesters.repository';
 
 @Injectable()
